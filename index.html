@@ -286,10 +286,8 @@
       const { rows } = clearAnim;
       const cleared  = rows.length;
       rows.sort((a, b) => b - a);
-      for (const r of rows) {
-        board.splice(r, 1);
-        board.unshift(Array(COLS).fill(null));
-      }
+      for (const r of rows) board.splice(r, 1);
+      for (let i = 0; i < cleared; i++) board.unshift(Array(COLS).fill(null));
       const pts    = [0, 100, 300, 500, 800];
       score       += (pts[cleared] ?? 800) * level;
       lines       += cleared;
